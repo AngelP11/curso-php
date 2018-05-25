@@ -1,0 +1,39 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+    New User
+{% endblock %}
+
+{% block content %}
+	<p>
+		<a class="btn" href="{{ 'admin/posts' | url }}" >Back</a>
+	</p>
+
+	{% if errors %}
+		{% include('partials/errors.twig') %}
+	{%  endif %}
+
+	{% if result == true %}
+		<div class="alert alert-success">Registro exisitoso</div>
+	{% endif %}
+
+	<form action="{{ 'admin/users/create' | url }}" method="POST">
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input class="form-control" type="text" name="name" id="name">
+		</div>
+
+		<div class="form-group">
+			<label for="email">E-mail</label>
+			<input type="text" class="form-control" name="email" id="email"></input>
+		</div>
+
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" class="form-control" name="password" id="password"></input>
+		</div>
+		
+		<input class="btn btn-primary" type="submit" name="submit" value="Save">
+	</form>
+{% endblock %}
+

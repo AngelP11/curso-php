@@ -1,0 +1,22 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+    Blog Title
+{% endblock %}
+
+{% block content %}
+	{% for post in blogPosts %}
+		<div class="blog-post">
+			<h2>{{ post.title }}</h2>
+			<p>April 11, 2087 by <a href="">AngelP11</a></p>
+			{% if post.img_url %}
+				<div class="blog-post-image">
+					<img src="{{ post.img_url }}" alt="Image" width="100%">
+				</div>
+			{% endif %}
+			<div class="blog-post-content">
+				{{ post.content }}
+			</div>
+		</div>
+	{% endfor %}
+{% endblock %}

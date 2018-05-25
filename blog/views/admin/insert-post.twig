@@ -1,0 +1,56 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+    New Post
+{% endblock %}
+
+{% block content %}
+	<p>
+		<a class="btn" href="{{ 'admin/posts' | url }}" >Back</a>
+	</p>
+
+	{% if errors %}
+		{% include('partials/errors.twig') %}
+	{%  endif %}
+
+	{% if result == true %}
+		<div class="alert alert-success">Registro exisitoso</div>
+	{% endif %}
+
+	<form action="{{ 'admin/posts/create' | url }}" method="POST" onsubmit="return validateForm()">
+		<div class="form-group">
+			<label for="title">Title</label>
+			<input class="form-control" type="text" name="title" id="title">
+		</div>
+
+		<div class="form-group">
+			<label for="img_url">URL Image</label>
+			<input class="form-control" name="img_url" id="img_url"></input>
+		</div>
+
+		<div class="form-group">
+			<label for="content">Content</label>
+			<textarea class="form-control" name="content" id="content"></textarea>
+		</div>
+		
+		<input class="btn btn-primary" type="submit" name="submit" value="Save">
+	</form>
+{% endblock %}
+
+{% block js %}
+    <script>
+    	function validateForm () {
+    		const title = document.getElementById('title').value.trim();
+
+    		if (title === '') {
+    			swal({
+    				title: 'Error',
+    				text: 'Title is required',
+    				icon: 'error'
+    			});
+    			return false;
+    		}
+    	}
+    </script>
+{% endblock %}
+

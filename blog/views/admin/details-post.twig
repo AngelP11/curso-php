@@ -1,0 +1,14 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+    Admin Panel
+{% endblock %}
+
+{% block content %}
+  <h3>Title: {{ blogPost.title }}</h3>
+  <img src="{{ blogPost.img_url }}" alt="Image" width="100%">
+  <h3>Content:</h3>
+  <p>
+    {{ blogPost.content }}
+  </p>
+{% endblock %} 
